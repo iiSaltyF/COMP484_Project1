@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Containers - My Homelab Notes</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+
+<body>
+    <header class="header">
+        <div class="topbar">
+            <h1 class="pagename">Containers</h1>
+        </div>
+
+        <!-- the webpages for this project specifically -->
+        <nav class="UnderlineNav" aria-label="Primary">
+            <ul class="UnderlineItemList" role="list">
+
+                <li class="UnderlineNavItem">
+                    <a href="index.html" class="UnderlineItem">
+                        Home
+                    </a>
+                </li>
+                <li class="UnderlineNavItem">
+                    <a href="networking.html" class="UnderlineItem">
+                        Networking
+                    </a>
+                </li>
+                <li class="UnderlineNavItem">
+                    <a href="hosting.html" class="UnderlineItem">
+                        Hosting
+                    </a>
+                </li>
+                <li class="UnderlineNavItem">
+                    <a href="containers.html" class="UnderlineItem">
+                        Containers
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="main">
+        <section class="card">
+            <h3>My personal workflow (containers)</h3>
+            <ul>
+                <li>Use <strong>Compose</strong> for single-host apps (fast, readable, easy to back up).</li>
+                <li>Put apps behind my personal reverse proxy and cloudflared to use hostnames + HTTPS.</li>
+                <li>Persist data in volumes, and back up volumes/configs explicitly.</li>
+                <li>Keep an “apps” repo with one folder per service: <span class="inline">compose.yaml</span> + notes.
+                </li>
+            </ul>
+
+            <hr>
+
+            <div class="callout">
+                <small>Containers are great for apps. <br>For “pet servers” (AD, NAS, routers), VMs often behave better. 
+                <br> I only really use VMs as an alt</small>
+            </div>
+        </section>
+
+        <section class="card">
+            <h3>Docker alternatives (when they shine)</h3>
+            <dl class="defs">
+                <dt><dfn>Podman</dfn></dt>
+                <dd>Docker-like CLI, rootless-friendly, good for tighter security models.</dd>
+
+                <dt><dfn>LXC/LXD</dfn></dt>
+                <dd>System containers (feel like lightweight VMs). Great for “almost a VM” workloads.</dd>
+
+                <dt><dfn>VMs</dfn></dt>
+                <dd>Strong isolation, easiest for OS-level services and “appliance” style systems.</dd>
+
+                <dt><dfn>Kubernetes</dfn></dt>
+                <dd>Powerful orchestration, but more moving parts—best when you truly need multi-node or scaling.</dd>
+            </dl>
+
+
+            <hr>
+            <h3>Picking the right tool</h3>
+            <ul>
+                <!-- Actually use these in my setup -->
+                <li><strong>Docker Compose if&colon;</strong> Single host + a few apps?</li>
+                <li><strong>VM if You Need&colon;</strong> OS control/kernel modules and heavy customization?</li>
+                <!-- I dont use kuernets these I got this from someone on reddit -->
+                <!-- when I was first starting -->
+                <li><strong>LXC/LXD if You Want&colon;</strong> Lightweight VMs requiring less overhead</li>
+                <li><strong>Kubernetes&colon;</strong>Multi-node, self-healing workloads, GitOps?</li>
+            </ul>
+        </section>
+    </div>
+
+    
+    <footer>
+    <!-- personal links for me -->
+    <nav class="personal">
+      <a href="http://192.168.50.230" title="Only for me">Homepage</a>
+      <a href="https://github.com/iiSaltyF" title="Github.com" target="_blank">My Github</a>
+    </nav>
+  </footer>
+
+  <!-- got from elsewhere but is used to detect the current page -->
+  <!-- will mess with more in future  -->
+  <script>
+    const file = location.pathname.split("/").pop() || "index.html";
+    document.querySelectorAll(".UnderlineItemList a").forEach(a => {
+      if (a.getAttribute("href") === file) a.classList.add("is-active");
+    });
+  </script>
+</body>
+
+</html>

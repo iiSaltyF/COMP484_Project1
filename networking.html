@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>Networking - My Homelab Notes</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <header class="header">
+    <div class="topbar">
+      <h1 class="pagename">Networking - <small> ports and the such</small></h1>
+    </div>
+
+    <!-- the webpages for this project specifically -->
+    <nav class="UnderlineNav" aria-label="Primary">
+      <ul class="UnderlineItemList" role="list">
+
+        <li class="UnderlineNavItem">
+          <a href="index.html" class="UnderlineItem">
+            Home
+          </a>
+        </li>
+        <li class="UnderlineNavItem">
+          <a href="networking.html" class="UnderlineItem">
+            Networking
+          </a>
+        </li>
+        <li class="UnderlineNavItem">
+          <a href="hosting.html" class="UnderlineItem">
+            Hosting
+          </a>
+        </li>
+        <li class="UnderlineNavItem">
+          <a href="containers.html" class="UnderlineItem">
+            Containers
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="main">
+    <section class="card">
+      <h3>Common ports cheat sheet</h3>
+      <p>
+        Ports aren&apos;t the main issue by themselves—but knowing what should be open and different rules helps spot mistakes fast.
+        <small><br>(In a lab, try to default-deny inbound and choose to allow only what you need whether it be locally or other.)</small>
+      </p>
+      <hr>
+
+      <div class="table-wrap" role="region" aria-label="Common ports table">
+
+        <!-- table took some time figuring out but I got it -->
+        <!-- info was mostly copy and paste  -->
+        <table>
+
+          <!-- head -->
+          <thead>
+            <tr>
+              <th>Port / Proto</th>
+              <th>Service</th>
+              <th>What it&apos;s used for</th>
+              <th>Homelab note</th>
+            </tr>
+          </thead>
+
+          <!-- main body -->
+          <tbody>
+            <tr>
+              <td><code>22/TCP</code></td>
+              <td>SSH</td>
+              <td>Remote shell, file copy (SCP/SFTP)</td>
+              <td>Use keys + disable password auth if possible</td>
+            </tr>
+            <tr>
+              <td><code>53/UDP,TCP</code></td>
+              <td>DNS</td>
+              <td>Name resolution</td>
+              <td>Internal DNS (Pi-hole/Unbound) is a huge quality-of-life upgrade</td>
+            </tr>
+            <tr>
+              <td><code>67-68/UDP</code></td>
+              <td>DHCP</td>
+              <td>IP assignment</td>
+              <td>Keep DHCP authoritative per VLAN/subnet</td>
+            </tr>
+            <tr>
+              <td><code>80/TCP</code></td>
+              <td>HTTP</td>
+              <td>Web traffic (plaintext)</td>
+              <td>Usually redirect to HTTPS</td>
+            </tr>
+            <tr>
+              <td><code>443/TCP</code></td>
+              <td>HTTPS</td>
+              <td>Encrypted web traffic</td>
+              <td>Reverse proxy + TLS termination lives here</td>
+            </tr>
+            <tr>
+              <td><code>123/UDP</code></td>
+              <td>NTP</td>
+              <td>Time sync</td>
+              <td>Time drift breaks TLS, logs, and authentication</td>
+            </tr>
+            <tr>
+              <td><code>25/TCP</code></td>
+              <td>SMTP</td>
+              <td>Mail transfer</td>
+              <td>Most labs use relay services; avoid exposing your own mail server</td>
+            </tr>
+            <tr>
+              <td><code>587/TCP</code></td>
+              <td>SMTP Submission</td>
+              <td>Authenticated sending</td>
+              <td>Prefer this over raw 25 for clients</td>
+            </tr>
+            <tr>
+              <td><code>445/TCP</code></td>
+              <td>SMB</td>
+              <td>Windows file sharing</td>
+              <td>Keep internal-only; segment untrusted devices</td>
+            </tr>
+            <tr>
+              <td><code>2049/TCP</code></td>
+              <td>NFS</td>
+              <td>Unix/Linux file sharing</td>
+              <td>Great for VM/container storage; lock to subnets</td>
+            </tr>
+            <tr>
+              <td><code>3000/TCP</code></td>
+              <td>App ports</td>
+              <td>Common dev/app default (varies)</td>
+              <td>Put apps behind a proxy instead of exposing random high ports</td>
+            </tr>
+            <tr>
+              <td><code>3306/TCP</code></td>
+              <td>MySQL/MariaDB</td>
+              <td>Database</td>
+              <td>Don&apos;t expose DBs directly; allow only app subnets</td>
+            </tr>
+            <tr>
+              <td><code>5432/TCP</code></td>
+              <td>PostgreSQL</td>
+              <td>Database</td>
+              <td>Same idea: internal access only</td>
+            </tr>
+            <tr>
+              <td><code>8080/TCP</code></td>
+              <td>Alt HTTP</td>
+              <td>Web apps / admin UIs</td>
+              <td>Proxy it to 443 with a hostname</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <hr>
+      <div class="callout">
+        Quick mental model: 
+        <br><strong>TCP</strong> is “reliable stream”, 
+        <br><strong>UDP</strong> is “fast packets”.
+        <br>DNS uses both&colon; UDP for most queries, TCP for larger answers/zone transfers.
+      </div>
+    </section>
+
+    <section class="card">
+      <h3>Protocols you&apos;ll see everywhere</h3>
+      
+      <ul>
+        <li><strong>ARP</strong>: “Who has this IP?” on a local network.</li>
+        <li><strong>ICMP</strong>: Ping/traceroute and network diagnostics.</li>
+        <li><strong>DHCP</strong>: Hands out IP, gateway, DNS to clients.</li>
+        <li><strong>DNS</strong>: Names ↔ IPs (and a lot more, like TXT records).</li>
+        <li><strong>TLS</strong>: Encryption + identity for HTTPS and other services.</li>
+      </ul>
+
+      <hr>
+      <h3>Basic homelab network pattern</h3>
+      <p>
+        If you only do one thing: create separate networks (VLANs/subnets) and specify trust levels.
+      </p>
+      <ul>
+        <li><strong>LAN</strong>: your computers/phones</li>
+        <li><strong>LAB</strong>: servers/VMs/containers</li>
+        <li><strong>IoT</strong>: TVs, cameras, smart devices (limited access)</li>
+        <li><strong>Guest</strong>: internet-only</li>
+      </ul>
+    </section>
+
+  </div>
+
+  <footer>
+    <!-- personal links for me -->
+    <nav class="personal">
+      <a href="http://192.168.50.230" title="Only for me">Homepage</a>
+      <a href="https://github.com/iiSaltyF" title="Github.com" target="_blank">My Github</a>
+    </nav>
+  </footer>
+
+  <!-- got from elsewhere but is used to detect the current page -->
+  <!-- will mess with more in future  -->
+  <script>
+    const file = location.pathname.split("/").pop() || "index.html";
+    document.querySelectorAll(".UnderlineItemList a").forEach(a => {
+      if (a.getAttribute("href") === file) a.classList.add("is-active");
+    });
+  </script>
+</body>
+
+</html>

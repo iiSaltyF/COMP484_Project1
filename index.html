@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+  <title>My Project Page</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<!-- use div like containers for android dev (kotlin, etc) -->
+<!-- universal modifiers defined by ' class="" ' -->
+
+<body>
+
+  <!-- header insipiration from Github -->
+  <!-- I like how it looked clean took a while to figure out -->
+  <header class="header">
+    <div class="topbar">
+      <h1 class="pagename">My Homelab Notes</h1>
+    </div>
+
+    <!-- the webpages for this project specifically -->
+    <nav class="UnderlineNav" aria-label="Primary">
+      <ul class="UnderlineItemList" role="list">
+
+        <li class="UnderlineNavItem">
+          <a href="index.html" class="UnderlineItem">
+            Home
+          </a>
+        </li>
+        <li class="UnderlineNavItem">
+          <a href="networking.html" class="UnderlineItem">
+            Networking
+          </a>
+        </li>
+        <li class="UnderlineNavItem">
+          <a href="hosting.html" class="UnderlineItem">
+            Hosting
+          </a>
+        </li>
+        <li class="UnderlineNavItem">
+          <a href="containers.html" class="UnderlineItem">
+            Containers
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- will for now only list what Im doing and the plan for this proj -->
+
+  <!-- will later actaully use it on my local  -->
+  <!-- set up to tab to actaul pages I commonly use -->
+  <section class="grid">
+    <div class="card">
+      <h3>What I&apos;m running right now</h3>
+
+      <p class="small">Swap these placeholders for your real setup.</p>
+      <div class="kv">
+        <div class="item">
+          <strong>Core hardware&colon;</strong>
+          <div>
+            Cheap Mini PCs + used desktops
+            <br>(mix of SSDs + HDDs)
+          </div>
+        </div>
+
+        <!-- the best -->
+        <div class="item">
+          <strong>Virtualization&colon;</strong>
+          <div><code>Proxmox</code> </div>
+        </div>
+
+        <div class="item">
+          <!-- buzz words I kept Hearing so I'm including -->
+          <strong>Networking&colon;</strong>
+          <div>Router + managed switch • VLANs for <code>LAN</code> / <code>IoT</code> / <code>Lab</code></div>
+        </div>
+
+
+        <div class="item">
+          <strong>Core services&colon;</strong>
+          <div>DNS • DHCP • Reverse proxy • Monitoring • Backups</div>
+        </div>
+      </div>
+
+      <hr>
+      <div class="callout">
+        if it&apos;s exposed to the internet, it gets updates, auth hardening, and logging.
+      </div>
+    </div>
+
+    <aside class="card">
+      <h3>What you&apos;ll find here</h3>
+      <ul>
+        <li>A cheat sheet of common ports + what they&apos;re for</li>
+        <li>Protocol basics in plain language</li>
+        <li>Hosting procedures (reverse proxies, TLS, backups)</li>
+        <li>Docker + alternatives (Podman, LXC, VMs, Kubernetes)</li>
+      </ul>
+      <hr>
+    </aside>
+  </section>
+
+
+
+  <!-- footer will be the same everypage (copy and paste) -->
+  <footer>
+    <!-- personal links for me -->
+    <nav class="personal">
+      <a href="http://192.168.50.230" title="Only for me">Homepage</a>
+      <a href="https://github.com/iiSaltyF" title="Github.com" target="_blank">My Github</a>
+    </nav>
+  </footer>
+
+  <!-- got from elsewhere but is used to detect the current page -->
+  <!-- will mess with more in future  -->
+  <script>
+    const file = location.pathname.split("/").pop() || "index.html";
+    document.querySelectorAll(".UnderlineItemList a").forEach(a => {
+      if (a.getAttribute("href") === file) a.classList.add("is-active");
+    });
+  </script>
+</body>
+
+</html>

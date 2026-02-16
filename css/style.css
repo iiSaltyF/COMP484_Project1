@@ -1,0 +1,141 @@
+/* getting rid of all gaps and setting universal font color */
+html {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #14181e;
+    color: #c6cdd5;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+h1 {
+    margin: 0;
+    padding: 0;
+}
+
+.main {
+    margin: 4px;
+    padding-left: 6px;
+}
+
+/*  */
+.header {
+    background: #0d1117;
+    border-bottom: 1px solid #30363d;
+    padding: 12px 16px 0;
+}
+
+
+/* Top row incase I want to add more later*/
+.topbar {
+    display: flex;
+    align-items: center;
+    padding-bottom: 10px;
+}
+
+.pagename {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 700;
+    color: #c9d1d9;
+}
+
+
+/* The actual tab link */
+.UnderlineItem {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 12px;
+    color: #c9d1d9;
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+}
+
+.UnderlineItem:hover {
+    background: rgba(255, 255, 255, 0.04);
+    border-bottom-color: #30363d;
+}
+
+/*  
+    Active tab like GitHub
+    github color for ref:  #f78166
+*/
+.UnderlineItem.is-active {
+    font-weight: 600;
+    border-bottom-color: #163496;
+}
+
+/* Underline the actaul nav bar */
+.UnderlineNav {
+    /* not actaully used here but can be used if enough pages is added */
+    overflow-x: auto;
+}
+
+.UnderlineItemList {
+    list-style: none;
+    display: flex;
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+    border-bottom: 2px solid #21262d;
+}
+
+.UnderlineNavItem {
+    margin: 0;
+}
+
+
+/* didnt know you can specify what element specifically gets modifiers */
+.personal a {
+    color: #c9d1d9;
+    text-decoration: none;
+    margin-right: 4px;
+    padding: 8px;
+}
+
+.personal a:hover {
+    text-decoration: underline;
+}
+
+.footer {
+    padding-bottom: 8px;
+}
+
+.card {
+    border: 1px solid var(--border);
+    background: var(--panel);
+    border-radius: var(--radius);
+    padding: 18px;
+    box-shadow: var(--shadow);
+}
+
+/* found out that you can nest classes like this */
+.kv {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+}
+
+.kv .item{
+  border: 1px dashed var(--border);
+  border-radius: 12px;
+  padding: 12px;
+}
+
+
+/* say this thought it was cool so I copied */
+/* I did not make this nor will I claim to */
+.callout {
+    border-left: 4px solid rgba(122, 162, 255, 0.85);
+    padding: 12px 14px;
+    background: rgba(122, 162, 255, 0.08);
+    border-radius: 12px;
+    color: var(--muted);
+}
