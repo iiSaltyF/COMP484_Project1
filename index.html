@@ -6,7 +6,7 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 
-<!-- use div like containers for android dev (kotlin, etc) -->
+<!-- use div like containers for android dev &lpar;kotlin, etc&rpar; -->
 <!-- universal modifiers defined by ' class="" ' -->
 
 <body>
@@ -59,8 +59,8 @@
         <div class="item">
           <strong>Core hardware&colon;</strong>
           <div>
-            Cheap Mini PCs + used desktops
-            <br>(mix of SSDs + HDDs)
+            Cheap Mini PCs &plus; used desktops
+            <br>&lpar;mix of SSDs &plus; HDDs&rpar;
           </div>
         </div>
 
@@ -73,13 +73,13 @@
         <div class="item">
           <!-- buzz words I kept Hearing so I'm including -->
           <strong>Networking&colon;</strong>
-          <div>Router + managed switch • VLANs for <code>LAN</code> / <code>IoT</code> / <code>Lab</code></div>
+          <div>Router &plus; managed switch &bull; VLANs for <code>LAN</code> / <code>IoT</code> / <code>Lab</code></div>
         </div>
 
 
         <div class="item">
           <strong>Core services&colon;</strong>
-          <div>DNS • DHCP • Reverse proxy • Monitoring • Backups</div>
+          <div>DNS &bull; DHCP &bull; Reverse proxy &bull; Monitoring &bull; Backups</div>
         </div>
       </div>
 
@@ -92,10 +92,10 @@
     <aside class="card">
       <h3>What you&apos;ll find here</h3>
       <ul>
-        <li>A cheat sheet of common ports + what they&apos;re for</li>
+        <li>A cheat sheet of common ports &plus; what they&apos;re for</li>
         <li>Protocol basics in plain language</li>
-        <li>Hosting procedures (reverse proxies, TLS, backups)</li>
-        <li>Docker + alternatives (Podman, LXC, VMs, Kubernetes)</li>
+        <li>Hosting procedures &lpar;reverse proxies, TLS, backups&rpar;</li>
+        <li>Docker &plus; alternatives &lpar;Podman, LXC, VMs, Kubernetes&rpar;</li>
       </ul>
       <hr>
     </aside>
@@ -103,7 +103,7 @@
 
 
 
-  <!-- footer will be the same everypage (copy and paste) -->
+  <!-- footer will be the same everypage &lpar;copy and paste&rpar; -->
   <footer>
     <!-- personal links for me -->
     <nav class="personal">
@@ -114,12 +114,7 @@
 
   <!-- got from elsewhere but is used to detect the current page -->
   <!-- will mess with more in future  -->
-  <script>
-    const file = location.pathname.split("/").pop() || "index.html";
-    document.querySelectorAll(".UnderlineItemList a").forEach(a => {
-      if (a.getAttribute("href") === file) a.classList.add("is-active");
-    });
-  </script>
+  
 </body>
 
 </html>

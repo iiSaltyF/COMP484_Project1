@@ -46,7 +46,7 @@
       <h3>Common ports cheat sheet</h3>
       <p>
         Ports aren&apos;t the main issue by themselves—but knowing what should be open and different rules helps spot mistakes fast.
-        <small><br>(In a lab, try to default-deny inbound and choose to allow only what you need whether it be locally or other.)</small>
+        <small><br>&lpar;In a lab, try to default-deny inbound and choose to allow only what you need whether it be locally or other.&rpar;</small>
       </p>
       <hr>
 
@@ -71,14 +71,14 @@
             <tr>
               <td><code>22/TCP</code></td>
               <td>SSH</td>
-              <td>Remote shell, file copy (SCP/SFTP)</td>
-              <td>Use keys + disable password auth if possible</td>
+              <td>Remote shell, file copy &lpar;SCP/SFTP&rpar;</td>
+              <td>Use keys &plus; disable password auth if possible</td>
             </tr>
             <tr>
               <td><code>53/UDP,TCP</code></td>
               <td>DNS</td>
               <td>Name resolution</td>
-              <td>Internal DNS (Pi-hole/Unbound) is a huge quality-of-life upgrade</td>
+              <td>Internal DNS &lpar;Pi-hole/Unbound&rpar; is a huge quality-of-life upgrade</td>
             </tr>
             <tr>
               <td><code>67-68/UDP</code></td>
@@ -89,14 +89,14 @@
             <tr>
               <td><code>80/TCP</code></td>
               <td>HTTP</td>
-              <td>Web traffic (plaintext)</td>
+              <td>Web traffic &lpar;plaintext&rpar;</td>
               <td>Usually redirect to HTTPS</td>
             </tr>
             <tr>
               <td><code>443/TCP</code></td>
               <td>HTTPS</td>
               <td>Encrypted web traffic</td>
-              <td>Reverse proxy + TLS termination lives here</td>
+              <td>Reverse proxy &plus; TLS termination lives here</td>
             </tr>
             <tr>
               <td><code>123/UDP</code></td>
@@ -131,7 +131,7 @@
             <tr>
               <td><code>3000/TCP</code></td>
               <td>App ports</td>
-              <td>Common dev/app default (varies)</td>
+              <td>Common dev/app default &lpar;varies&rpar;</td>
               <td>Put apps behind a proxy instead of exposing random high ports</td>
             </tr>
             <tr>
@@ -172,19 +172,19 @@
         <li><strong>ARP</strong>: “Who has this IP?” on a local network.</li>
         <li><strong>ICMP</strong>: Ping/traceroute and network diagnostics.</li>
         <li><strong>DHCP</strong>: Hands out IP, gateway, DNS to clients.</li>
-        <li><strong>DNS</strong>: Names ↔ IPs (and a lot more, like TXT records).</li>
-        <li><strong>TLS</strong>: Encryption + identity for HTTPS and other services.</li>
+        <li><strong>DNS</strong>: Names ↔ IPs &lpar;and a lot more, like TXT records&rpar;.</li>
+        <li><strong>TLS</strong>: Encryption &plus; identity for HTTPS and other services.</li>
       </ul>
 
       <hr>
       <h3>Basic homelab network pattern</h3>
       <p>
-        If you only do one thing: create separate networks (VLANs/subnets) and specify trust levels.
+        If you only do one thing: create separate networks &lpar;VLANs/subnets&rpar; and specify trust levels.
       </p>
       <ul>
         <li><strong>LAN</strong>: your computers/phones</li>
         <li><strong>LAB</strong>: servers/VMs/containers</li>
-        <li><strong>IoT</strong>: TVs, cameras, smart devices (limited access)</li>
+        <li><strong>IoT</strong>: TVs, cameras, smart devices &lpar;limited access&rpar;</li>
         <li><strong>Guest</strong>: internet-only</li>
       </ul>
     </section>

@@ -46,7 +46,7 @@
         <!-- https i get through cloudflare and keep http local -->
         <!-- dont know if its right but it workss -->
         <p>
-            The goal: every service gets a hostname, HTTPS, auth (if needed), logs, and a backup plan.
+            The goal: every service gets a hostname, HTTPS, auth &lpar;if needed&rpar;, logs, and a backup plan.
             <br>This keeps “random port sprawl” under control.
         </p>
 
@@ -67,22 +67,22 @@
             </div>
             <div class="item">
                 <strong>3&rpar; Add TLS</strong>
-                <div>Certificates + auto-renew = fewer surprises</div>
+                <div>Certificates &plus; auto-renew = fewer surprises</div>
             </div>
             <div class="item">
                 <strong>4&rpar; Require auth where appropriate</strong>
-                <div>SSO (OIDC) or basic auth for admin panels</div>
+                <div>SSO &lpar;OIDC&rpar; or basic auth for admin panels</div>
             </div>
             <div class="item">
-                <strong>5&rpar; Observe + backup</strong>
-                <div>Metrics/logs + backups you&apos;ve actually restored once</div>
+                <strong>5&rpar; Observe &plus; backup</strong>
+                <div>Metrics/logs &plus; backups you&apos;ve actually restored once</div>
             </div>
         </div>
 
         <hr>
         <div class="callout">
             Try not to expose anything publicly unless you have to. Prefer <strong>VPN access</strong>
-            (WireGuard/Tailscale/OpenVPN) over
+            &lpar;WireGuard/Tailscale/OpenVPN&rpar; over
             port-forwarding.
             <br>When you must port-forward, keep it minimal and monitor it.
         </div>
@@ -103,9 +103,9 @@
         <h3>Operational checklists</h3>
         <ul>
             <li><strong>Backups</strong>: define RPO/RTO, automate, test restores quarterly.</li>
-            <li><strong>Updates</strong>: pick a window; keep a rollback plan (snapshots help).</li>
+            <li><strong>Updates</strong>: pick a window; keep a rollback plan &lpar;snapshots help&rpar;.</li>
             <li><strong>Secrets</strong>: store in a vault or at least env files with tight permissions.</li>
-            <li><strong>Monitoring</strong>: uptime checks + basic CPU/RAM/disk metrics + logs.</li>
+            <li><strong>Monitoring</strong>: uptime checks &plus; basic CPU/RAM/disk metrics &plus; logs.</li>
             <li><strong>Docs</strong>: one page per service: purpose, URL, dependencies, backup path.</li>
         </ul>
     </section>

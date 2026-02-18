@@ -43,31 +43,31 @@
 
     <div class="main">
         <section class="card">
-            <h3>My personal workflow (containers)</h3>
+            <h3>My personal workflow &lpar;containers&rpar;</h3>
             <ul>
-                <li>Use <strong>Compose</strong> for single-host apps (fast, readable, easy to back up).</li>
-                <li>Put apps behind my personal reverse proxy and cloudflared to use hostnames + HTTPS.</li>
+                <li>Use <strong>Compose</strong> for single-host apps &lpar;fast, readable, easy to back up&rpar;.</li>
+                <li>Put apps behind my personal reverse proxy and cloudflared to use hostnames &plus; HTTPS.</li>
                 <li>Persist data in volumes, and back up volumes/configs explicitly.</li>
-                <li>Keep an “apps” repo with one folder per service: <span class="inline">compose.yaml</span> + notes.
+                <li>Keep an “apps” repo with one folder per service: <span class="inline">compose.yaml</span> &plus; notes.
                 </li>
             </ul>
 
             <hr>
 
             <div class="callout">
-                <small>Containers are great for apps. <br>For “pet servers” (AD, NAS, routers), VMs often behave better. 
+                <small>Containers are great for apps. <br>For “pet servers” &lpar;AD, NAS, routers&rpar;, VMs often behave better. 
                 <br> I only really use VMs as an alt</small>
             </div>
         </section>
 
         <section class="card">
-            <h3>Docker alternatives (when they shine)</h3>
+            <h3>Docker alternatives &lpar;when they shine&rpar;</h3>
             <dl class="defs">
                 <dt><dfn>Podman</dfn></dt>
                 <dd>Docker-like CLI, rootless-friendly, good for tighter security models.</dd>
 
                 <dt><dfn>LXC/LXD</dfn></dt>
-                <dd>System containers (feel like lightweight VMs). Great for “almost a VM” workloads.</dd>
+                <dd>System containers &lpar;feel like lightweight VMs&rpar;. Great for “almost a VM” workloads.</dd>
 
                 <dt><dfn>VMs</dfn></dt>
                 <dd>Strong isolation, easiest for OS-level services and “appliance” style systems.</dd>
@@ -81,7 +81,7 @@
             <h3>Picking the right tool</h3>
             <ul>
                 <!-- Actually use these in my setup -->
-                <li><strong>Docker Compose if&colon;</strong> Single host + a few apps?</li>
+                <li><strong>Docker Compose if&colon;</strong> Single host &plus; a few apps</li>
                 <li><strong>VM if You Need&colon;</strong> OS control/kernel modules and heavy customization?</li>
                 <!-- I dont use kuernets these I got this from someone on reddit -->
                 <!-- when I was first starting -->
